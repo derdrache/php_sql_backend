@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -43,7 +44,8 @@ class MyHomePage extends StatelessWidget {
 
   addProfil(){
     var newProfil = {
-      "name": "DevDrache"
+      "name": "DevDrache",
+      "age": "30"
     };
 
     ProfileDatabase().add(newProfil);
@@ -60,13 +62,17 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      FloatingActionButton.extended(onPressed: addProfil, label: const Text("Add Profil"),),
-      const SizedBox(height: 10,),
-      FloatingActionButton.extended(onPressed: updateProfil, label: const Text("Update Profil"),),
-      const SizedBox(height: 10,),
-      FloatingActionButton.extended(onPressed: getAllProfils, label: const Text("get all profils"),),
-    ],);
+    return Scaffold(
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          FloatingActionButton.extended(onPressed: addProfil, label: const Text("Add Profil"),),
+          const SizedBox(height: 30,),
+          FloatingActionButton.extended(onPressed: updateProfil, label: const Text("Update Profil"),),
+          const SizedBox(height: 30,),
+          FloatingActionButton.extended(onPressed: getAllProfils, label: const Text("get all profils"),),
+        ],),
+      ),
+    );
   }
 }
 
