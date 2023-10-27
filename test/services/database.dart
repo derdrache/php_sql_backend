@@ -9,15 +9,15 @@ class ProfileDatabase{
   add(newProfilData) async {
     var url = Uri.parse(databaseUrl + databasePathNewProfil);
     var data = {
-      "id": newProfilData["id"],
-      "name": newProfilData["name"],
+      "name": newProfilData["name"].replaceAll("'", "''"),
+      "age": newProfilData["age"]
     };
 
     await http.post(url, body: json.encode(data));
   }
 
   getData(queryStart, queryEnd) async{
-    var url = Uri.parse(databaseUrl + databasePathProfilGetData);
+    var url = Uri.parse(databaseUrl + databasePathGetData);
 
     var res = await http.post(url,
         body: json.encode(
@@ -30,7 +30,7 @@ class ProfileDatabase{
   }
 
   update(queryStart, queryEnd) async {
-    var url = Uri.parse(databaseUrl + databasePathProfilUpdate);
+    var url = Uri.parse(databaseUrl + databasePathUpdate);
 
     await http.post(url,
         body: json.encode(
